@@ -36,21 +36,21 @@ namespace Spout {
 			}
 		}
 		protected virtual void Update(){
-			if (_tex == null || _tex.width != width || _tex.height != height) {
-				Destroy (_tex);
-				_tex = new RenderTexture (width, height, 24, RenderTextureFormat.ARGB32);
-				_tex.Create ();
-
-				NotifyOnUpdateTexture(_tex);
-
-				if (_impl != null)
-					_impl.Dispose ();
-				_impl = new SpoutSenderImpl (sharingName, textureFormat, _tex);
-			}
-
+			if (_tex == null || _tex.width != width || _tex.height != height)
+                Rebuild ();
 			if (_impl != null)
 				_impl.Update ();
 		}
+
+        public virtual void Rebuild () {
+            Destroy (_tex);
+            _tex = new RenderTexture (width, height, 24, RenderTextureFormat.ARGB32);
+            _tex.Create ();
+            if (_impl != null)
+                _impl.Dispose ();
+            _impl = new SpoutSenderImpl (sharingName, textureFormat, _tex);
+            NotifyOnUpdateTexture (_tex);
+        }
 
 		protected virtual void _OnSpoutEnabled(){
 			if(enabled){
