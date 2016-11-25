@@ -7,5 +7,5 @@ git submodule add https://github.com/nobnak/Spout4UnitySubmod.git Assets/Package
 ```
 
 ### Send a texture
-- [CameraSpoutSender](Scripts/Sender/CameraSpoutSender.cs) : Attach this to a camera to send its output
+- [CameraSpoutSender.cs](Scripts/Sender/CameraSpoutSender.cs) : Attach this to a camera to send its output
 - [SpoutSenderImpl.cs](Scripts/Sender/Implement/SpoutSenderImpl.cs) : Use this to create a custom sender
