@@ -33,6 +33,7 @@ namespace Spout {
 			if (_tex != null) {
 				Destroy (_tex);
 				_tex = null;
+                NotifyOnUpdateTexture (_tex);
 			}
 		}
 		protected virtual void Update(){
