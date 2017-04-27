@@ -9,6 +9,9 @@ namespace Spout {
 		public bool debugConsole = false;
 
 		public SpoutSenderImpl.TextureFormat textureFormat = SpoutSenderImpl.TextureFormat.DXGI_FORMAT_R8G8B8A8_UNORM;
+        public int depth = 24;
+        public RenderTextureFormat format = RenderTextureFormat.ARGB32;
+        public RenderTextureReadWrite gamma = RenderTextureReadWrite.Linear;
 		public int width = 1920;
 		public int height = 1080;
 
@@ -45,7 +48,7 @@ namespace Spout {
 
         public virtual void Rebuild () {
             Destroy (_tex);
-            _tex = new RenderTexture (width, height, 24, RenderTextureFormat.ARGB32);
+            _tex = new RenderTexture (width, height, depth, format, gamma);
             _tex.Create ();
             if (_impl != null)
                 _impl.Dispose ();
