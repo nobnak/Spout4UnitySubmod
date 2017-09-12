@@ -6,7 +6,13 @@ namespace Spout{
 	public class SpoutSenderImpl : System.IDisposable {
 		//according to dxgiformat.h :
 		//tested with DXGI_FORMAT_R8G8B8A8_UNORM (ATI Card)
-		public enum TextureFormat { DXGI_FORMAT_R32G32B32A32_FLOAT = 2, DXGI_FORMAT_R10G10B10A2_UNORM = 24, DXGI_FORMAT_R8G8B8A8_UNORM = 28, DXGI_FORMAT_B8G8R8A8_UNORM=87 }
+		public enum TextureFormat { 
+            DXGI_FORMAT_R32G32B32A32_FLOAT = 2, 
+            DXGI_FORMAT_R10G10B10A2_UNORM = 24, 
+            DXGI_FORMAT_R11G11B10_FLOAT = 26,
+            DXGI_FORMAT_R8G8B8A8_UNORM = 28, 
+            DXGI_FORMAT_B8G8R8A8_UNORM = 87
+        }
 
 		// if there are problems you can increase this value 
 		public const int STARTUP_FRAMES_DELAY = 3;
