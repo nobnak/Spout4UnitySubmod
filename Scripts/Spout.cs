@@ -107,6 +107,8 @@ namespace Spout {
 			_nullTexture.hideFlags = HideFlags.HideAndDontSave;
 
 		}
+
+
 		protected virtual void OnEnable(){
 			if(_instance != null && _instance != this ) {
 				Destroy(this.gameObject);
@@ -122,9 +124,15 @@ namespace Spout {
 			_Init();
 			if(OnEnabled != null) OnEnabled();
 		}
+
+
+        int count;
 		protected virtual void Update() {
-			if(isReceiving)
-				checkReceivers();
+            if (isReceiving)
+            {
+                if ( count++ > 0) // If a sender already exists on the same PC, an error will occur when checkReceivers() is called immediately.
+                    checkReceivers();
+            }
 
 			lock(this) {
 				foreach (TextureInfo s in newSenders) {
@@ -157,8 +165,8 @@ namespace Spout {
 			//Force the Plugin to check. Otherwise we don't get a SenderStopped delegate call
 			Update ();
 		}
-		
-		protected virtual void OnDestroy() {
+
+        protected virtual void OnDestroy() {
 			if (_instance != this)
 				return;
 		
